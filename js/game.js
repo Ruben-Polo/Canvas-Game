@@ -14,6 +14,7 @@ class Game {
     this.enemies = [];
     this.intervalId;
     this.frameCounter = 0;
+    this.rithm = 120;
   }
 
   startGame() {
@@ -22,32 +23,71 @@ class Game {
       this.ctx.clearRect(0,0,this.w,this.h);
       this.draw();
       this.move();
-      if (this.frameCounter % 60 == 0){
-        console.log("mete enemigo");
+      this.update();
+      this.collision();
+      if (this.frameCounter % this.rithm === 0){
+        // console.log("mete enemigo");
         this.enemies.push(new Enemy(this,this.h));
         this.frameCounter = 0;
         // console.log(this.enemies);
       }
     }, 1000/60);
   }
-  
+
   draw() {
     this.background.drawBackground();
     this.player.drawPlayer();
     for (var i = 0; i < this.enemies.length; i++){
       this.enemies[i].drawEnemies();
     }
-
-    
   }
   move() {
-    for (var i = 0; i <this.enemies.length; i++){
-      this.enemies[i].moveEnemies();
-      if (this.enemies[i].x >= this.w) {
-        this.enemies.splice(i,1);
-        console.log("elimina enemigo");
-      }
+      for (var i = 0; i <this.enemies.length; i++){
+        this.enemies[i].moveEnemies();
+        if (this.enemies[i].x >= this.w) {
+          this.enemies.splice(i,1);
+          // console.log("elimina enemigo");
+        }
     }
   }
+
+  collision() {
+    return this.enemies.some(enemy => {
+      if(
+        this.player.x < enemy.x + enemy.w &&
+        this.player.x + this.player.w > enemy.x &&
+        this.player.y < enemy.y + enemy.h &&
+        this.player.y + this.player.h > enemy.y
+        )
+         {
+          this.player.x = 450;
+          this.player.y = 600;
+          // lives --;
+          // if(lives === 0) {
+            // confirm("Game Over! Do You want to play again?")
+            // lives = 3;
+          // gameScore = 0;
+          }
+        })
+      }
+
+    update() {
+    if(this.player.x+this.player.w > 900) {
+      this.player.x = 870;
+    }
+    if(this.player.x < 0) {
+      this.player.x = 0;
+    }
+    if(this.player.y + this.player.h >= 700) {
+      this.player.y = 670;
+    }
+    if(this.player.y < 0) {
+     console.log("ha pasado")
+      this.player.x = 450;
+      this.player.y = 600;
+      this.rithm -= 60;
+     console.log("CUIDADO, HAY MAS ENEMIGOS")
+    }
+    }
 }
 
