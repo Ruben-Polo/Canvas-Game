@@ -5,7 +5,7 @@ class Enemy {
     this.x = 0;
     this.w = 30;
     this.h = 30;
-    this.velocity = (Math.floor((Math.random() * 3)+1));
+    this.velocity = (Math.floor((Math.random() * 15)+1));
   }
 
   drawEnemies() {
