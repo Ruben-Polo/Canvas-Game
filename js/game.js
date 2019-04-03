@@ -17,12 +17,16 @@ class Game {
     this.time = 80;
     this.gameScore = 0;
     this.lives = 3;
+    this.level = 1;
     this.score = document.querySelector('.score > span');
     this.liveLeft = document.querySelector('.lives > span');
+    this.levels = document.querySelector('.level > span');
   }
 
   startGame() {
-    this.intervalId = setInterval(() => {
+      this.liveLeft.innerHTML = this.lives;
+      this.levels.innerHTML = this.level;
+      this.intervalId = setInterval(() => {
       this.frameCounter++;
       this.ctx.clearRect(0, 0, this.w, this.h);
       this.draw();
@@ -30,10 +34,8 @@ class Game {
       this.update();
       this.collision();
       if (this.frameCounter % this.time === 0) {
-        // console.log("mete enemigo");
         this.enemies.push(new Enemy(this, this.h));
         this.frameCounter = 0;
-        // console.log(this.enemies);
       }
     }, 1000 / 60);
   }
@@ -50,7 +52,6 @@ class Game {
       this.enemies[i].moveEnemies();
       if (this.enemies[i].x >= this.w) {
         this.enemies.splice(i, 1);
-        // console.log("elimina enemigo");
       }
     }
   }
@@ -63,15 +64,16 @@ class Game {
         this.player.y < enemy.y + enemy.h &&
         this.player.y + this.player.h > enemy.y
       ) {
-        this.player.x = 450;
-        this.player.y = 500;
+        this.player.x = (this.w / 2) - this.player.w / 2;
+        this.player.y = 600;
         this.lives--;
         this.liveLeft.innerHTML = this.lives;
         if(this.lives === 0) {
         alert("do you want to play again?")
-        this.lives = 3;
-        this.gameScore = 0;
-        this.liveLeft.innerHTML = this.lives;
+        this.enemies.forEach((enemy) => {
+          enemy.x = -150;
+        })
+        this.reset();
       }
     }
   })
@@ -79,28 +81,38 @@ class Game {
 
   update() {
     if (this.player.x + this.player.w > 900) {
-      this.player.x = 870;
+      this.player.x = 815;
     }
     if (this.player.x < 0) {
       this.player.x = 0;
     }
     if (this.player.y + this.player.h >= 700) {
-      this.player.y = 670;
+      this.player.y = 635;
     }
     if (this.player.y < 0) {
-      console.log("ha pasado")
-      this.player.x = 450;
-      this.player.y = 500;
+      this.player.x = (this.w / 2) - this.player.w / 2;
+      this.player.y = 600;
       this.time -= 10;
-      //alert("stage 2");
-      console.log(this.gameScore);
       this.gameScore ++;
       this.score.innerHTML = this.gameScore * 100;
+      this.level ++;
+      this.levels.innerHTML = this.level;
       this.enemies.forEach((enemy) => {
       enemy.velocity += 3;
-        //console.log(enemy.velocity);
       })
     }
+  }
+  reset() {
+        this.enemies.forEach((enemy) => {
+          enemy.velocity = (Math.floor((Math.random() * 15)+1));
+        })
+        this.time = 80;
+        this.lives = 3;
+        this.level = 1;
+        this.gameScore = 0;
+        this.liveLeft.innerHTML = this.lives;
+        this.levels.innerHTML = this.level;
+        this.score.innerHTML = this.gameScore;
   }
 }
 

@@ -2,7 +2,7 @@ class Background {
   constructor(game) {
     this.game = game;
     this.back = new Image();
-    this.back.src = "../images/background.jpg"
+    this.back.src = "../images/background1.png"
   }
   drawBackground() {
     this.game.ctx.beginPath();

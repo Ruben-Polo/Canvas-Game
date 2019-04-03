@@ -1,10 +1,10 @@
 class Enemy {
   constructor(game,h) {
     this.game = game;
-    this.y = (Math.floor(Math.random() * this.game.h + 171));
+    this.y = Math.floor(Math.random() * ((this.game.h - 200)-100 + 1)+100);
     this.x = 0;
-    this.w = 101;
-    this.h = 171;
+    this.w = 85;
+    this.h = 65;
     // this.velocity = 150 + Math.floor(Math.random() * 800)
     this.velocity = (Math.floor((Math.random() * 15)+1));
     this.enemy = new Image();

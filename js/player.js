@@ -1,11 +1,11 @@
 class Player {
   constructor(game) {
     this.game = game;
-    this.x = 450;
-    this.y = 500;
     this.movePlayer();
-    this.w = 101;
-    this.h = 171;
+    this.w = 85;
+    this.x = (this.game.w / 2) - this.w / 2;
+    this.y = 600;
+    this.h = 65;
     this.player = new Image();
     this.player.src = "../images/player.png"
   }
@@ -17,18 +17,18 @@ class Player {
 
   movePlayer() {
     document.onkeydown = (e) => {
-      switch(e.keyCode) {
+      switch(e.keyCode) {    
         case 37:
-          this.x -=20;
+          this.x -=80;
           break;
         case 38:
-          this.y -=20;
+          this.y -=80;
           break;
         case 39:
-          this.x +=20;
+          this.x +=80;
           break;
         case 40:
-          this.y +=20;
+          this.y +=80;
           break;
       }
     }
