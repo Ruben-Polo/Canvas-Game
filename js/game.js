@@ -21,6 +21,7 @@ class Game {
     this.score = document.querySelector('.score > span');
     this.liveLeft = document.querySelector('.lives > span');
     this.levels = document.querySelector('.level > span');
+    this.popUp = document.querySelector('.popUp');
   }
 
   startGame() {
@@ -90,6 +91,11 @@ class Game {
       this.player.y = 635;
     }
     if (this.player.y < 0) {
+      this.popUp.innerHTML = 'Your are at level this.level';
+      this.popUp.style.display = "block";
+      setTimeout( () => {
+        this.popUp.style.display = "none";
+      }, 3000);
       this.player.x = (this.w / 2) - this.player.w / 2;
       this.player.y = 600;
       this.time -= 10;
@@ -97,6 +103,9 @@ class Game {
       this.score.innerHTML = this.gameScore * 100;
       this.level ++;
       this.levels.innerHTML = this.level;
+      this.enemies.forEach((enemy) => {
+        enemy.x = -150;
+      })
       this.enemies.forEach((enemy) => {
       enemy.velocity += 3;
       })
