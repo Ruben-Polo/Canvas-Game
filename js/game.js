@@ -15,6 +15,10 @@ class Game {
     this.intervalId;
     this.frameCounter = 0;
     this.time = 80;
+    this.gameScore = 0;
+    this.lives = 3;
+    this.score = document.querySelector('.score > span');
+    this.liveLeft = document.querySelector('.lives > span');
   }
 
   startGame() {
@@ -60,15 +64,18 @@ class Game {
         this.player.y + this.player.h > enemy.y
       ) {
         this.player.x = 450;
-        this.player.y = 600;
-        // lives --;
-        // if(lives === 0) {
-        // confirm("Game Over! Do You want to play again?")
-        // lives = 3;
-        // gameScore = 0;
+        this.player.y = 500;
+        this.lives--;
+        this.liveLeft.innerHTML = this.lives;
+        if(this.lives === 0) {
+        alert("do you want to play again?")
+        this.lives = 3;
+        this.gameScore = 0;
+        this.liveLeft.innerHTML = this.lives;
       }
-    })
-  }
+    }
+  })
+}
 
   update() {
     if (this.player.x + this.player.w > 900) {
@@ -83,11 +90,15 @@ class Game {
     if (this.player.y < 0) {
       console.log("ha pasado")
       this.player.x = 450;
-      this.player.y = 600;
+      this.player.y = 500;
       this.time -= 10;
+      //alert("stage 2");
+      console.log(this.gameScore);
+      this.gameScore ++;
+      this.score.innerHTML = this.gameScore * 100;
       this.enemies.forEach((enemy) => {
-        enemy.velocity += 3;
-        console.log(enemy.velocity);
+      enemy.velocity += 3;
+        //console.log(enemy.velocity);
       })
     }
   }

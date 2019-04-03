@@ -2,15 +2,16 @@ class Player {
   constructor(game) {
     this.game = game;
     this.x = 450;
-    this.y = 600;
+    this.y = 500;
     this.movePlayer();
-    this.w = 30;
-    this.h = 30;
+    this.w = 101;
+    this.h = 171;
+    this.player = new Image();
+    this.player.src = "../images/player.png"
   }
   drawPlayer() {
     this.game.ctx.beginPath();
-    this.game.ctx.fillStyle="purple";
-    this.game.ctx.fillRect(this.x, this.y, this.w,this.h);
+    this.game.ctx.drawImage(this.player, this.x, this.y, this.w,this.h)
     this.game.ctx.closePath();
   }
 
