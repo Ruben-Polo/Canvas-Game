@@ -1,12 +1,34 @@
+@import "compass/css3";
+
+@import "compass/css3/transform";
+@import url(https://fonts.googleapis.com/css?family=Bangers);
+
+
 body {
+  cursor: url(../images/bug2.png), auto;
   text-align: center;
+  font-family: 'Bangers', cursive;
 }
 
 body h1 {
   font-size: 30px;
   text-transform: uppercase;
 }
-
+.title {
+  text-align: center;
+  font-weight: normal;
+  color: #ED6565;
+  text-transform: uppercase;
+  font-size: 8em;
+  white-space: nowrap;
+  font-size: 10vw;
+  z-index: 1000;
+  font-family: 'Bangers', cursive;
+  text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.7);
+  @include skew(0, -6.7deg, false);
+  @include transition-property(font-size);
+  @include transition-duration(0.5s);
+}
 body button {
   font-size: 20px;
   background-color: black;
@@ -18,11 +40,19 @@ body button {
   margin-bottom: 20px;
 }
 .game-stats {
+  display: none;
+  opacity: 0;
+  /*visibility: hidden; */
 	margin: 3rem auto 0 auto;
 	width: 30%;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
+}
+
+img:hover {
+  filter: sepia();
+  transform: rotate(90deg);
 }
 
 .popUp {
@@ -36,5 +66,16 @@ body button {
   background: rebeccapurple;
   position: relative;
   z-index: 9999;
-  top: 26rem;
+  top: -26rem;
+}
+
+#ocultar {
+  display: none;
+}
+#display {
+  display: flex;
+  opacity: 1;
+}
+#justin {
+  width: 20%;
 }

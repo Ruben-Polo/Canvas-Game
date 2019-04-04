@@ -25,6 +25,7 @@ class Game {
   }
 
   startGame() {
+    this.hideHtml();
       this.liveLeft.innerHTML = this.lives;
       this.levels.innerHTML = this.level;
       this.intervalId = setInterval(() => {
@@ -91,7 +92,8 @@ class Game {
       this.player.y = 635;
     }
     if (this.player.y < 0) {
-      this.popUp.innerHTML = 'Your are at level this.level';
+      this.level ++;
+      this.popUp.innerHTML = `Congratulations! Your are at level ${this.level}`;
       this.popUp.style.display = "block";
       setTimeout( () => {
         this.popUp.style.display = "none";
@@ -101,14 +103,17 @@ class Game {
       this.time -= 10;
       this.gameScore ++;
       this.score.innerHTML = this.gameScore * 100;
-      this.level ++;
       this.levels.innerHTML = this.level;
-      this.enemies.forEach((enemy) => {
-        enemy.x = -150;
-      })
-      this.enemies.forEach((enemy) => {
-      enemy.velocity += 3;
-      })
+      setTimeout( () => {
+        this.enemies.forEach((enemy) => {
+          enemy.x = -150;
+        })
+        this.enemies.forEach((enemy) => {
+        enemy.velocity += 3;
+        })
+
+      }, 2000);
+      
     }
   }
   reset() {
@@ -122,6 +127,10 @@ class Game {
         this.liveLeft.innerHTML = this.lives;
         this.levels.innerHTML = this.level;
         this.score.innerHTML = this.gameScore;
+  }
+  hideHtml() {
+    document.querySelector(".main").setAttribute("id", "ocultar")
+    document.querySelector(".game-stats").setAttribute("id", "display")
   }
 }
 

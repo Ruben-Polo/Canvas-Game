@@ -5,7 +5,7 @@ class Player {
     this.w = 85;
     this.x = (this.game.w / 2) - this.w / 2;
     this.y = 600;
-    this.h = 65;
+    this.h = 75;
     this.player = new Image();
     this.player.src = "../images/player.png"
   }
