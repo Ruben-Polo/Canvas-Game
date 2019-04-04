@@ -5,8 +5,7 @@ class Enemy {
     this.x = 0;
     this.w = 85;
     this.h = 65;
-    // this.velocity = 150 + Math.floor(Math.random() * 800)
-    this.velocity = (Math.floor((Math.random() * 15)+1));
+    this.velocity = (Math.floor((Math.random() * 20)+1));
     this.enemy = new Image();
     this.enemy.src = "../images/enemy.png";
   }
@@ -16,7 +15,6 @@ class Enemy {
   this.game.ctx.drawImage(this.enemy,this.x, this.y, this.w, this.h)
   }
   moveEnemies() {
-    // console.log(this.velocity)
     this.x += this.velocity;
   }
 };

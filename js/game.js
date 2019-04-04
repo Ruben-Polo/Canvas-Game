@@ -14,7 +14,7 @@ class Game {
     this.enemies = [];
     this.intervalId;
     this.frameCounter = 0;
-    this.time = 80;
+    this.time = 60;
     this.gameScore = 0;
     this.lives = 3;
     this.level = 1;
@@ -22,10 +22,15 @@ class Game {
     this.liveLeft = document.querySelector('.lives > span');
     this.levels = document.querySelector('.level > span');
     this.popUp = document.querySelector('.popUp');
+    this.body = document.querySelector("body");
+    this.audio = new Audio("../images/Backstreet Boys - Everybody (Backstreet's Back) (Official Music Video)-[AudioTrimmer.com].mp3");
   }
 
   startGame() {
-    this.hideHtml();
+      this.hideHtml();
+      this.body.style.backgroundImage = "url('../images/justin.gif')"
+      this.body.style.backgroundRepeat = "repeat";
+      this.body.style.backgroundSize = "20%";
       this.liveLeft.innerHTML = this.lives;
       this.levels.innerHTML = this.level;
       this.intervalId = setInterval(() => {
@@ -71,7 +76,7 @@ class Game {
         this.lives--;
         this.liveLeft.innerHTML = this.lives;
         if(this.lives === 0) {
-        alert("do you want to play again?")
+        alert("Do you want to play again?")
         this.enemies.forEach((enemy) => {
           enemy.x = -150;
         })
@@ -93,32 +98,35 @@ class Game {
     }
     if (this.player.y < 0) {
       this.level ++;
-      this.popUp.innerHTML = `Congratulations! Your are at level ${this.level}`;
+      this.popUp.innerHTML = `LEVEL ${this.level}`;
       this.popUp.style.display = "block";
       setTimeout( () => {
         this.popUp.style.display = "none";
       }, 3000);
       this.player.x = (this.w / 2) - this.player.w / 2;
       this.player.y = 600;
-      this.time -= 10;
+      this.time -= 5;
       this.gameScore ++;
       this.score.innerHTML = this.gameScore * 100;
       this.levels.innerHTML = this.level;
-      setTimeout( () => {
-        this.enemies.forEach((enemy) => {
-          enemy.x = -150;
-        })
-        this.enemies.forEach((enemy) => {
-        enemy.velocity += 3;
-        })
+      this.enemies.forEach((enemy) => {
+      enemy.x = -150;
+      })
+      this.enemies.forEach((enemy) => {
+      enemy.velocity += 3;
+      })
 
-      }, 2000);
-      
+      if(this.gameScore === 2 &&  this.lives > 0) {
+        console.log(this.audio)
+        this.audio.play();
+        this.popUp.innerHTML = `CONGRATULATIONS! YOU WON THE GAME!!!`;
+        this.reset();
+            }
     }
   }
   reset() {
         this.enemies.forEach((enemy) => {
-          enemy.velocity = (Math.floor((Math.random() * 15)+1));
+          enemy.velocity = (Math.floor((Math.random() * 20)+1));
         })
         this.time = 80;
         this.lives = 3;
