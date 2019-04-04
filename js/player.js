@@ -7,7 +7,8 @@ class Player {
     this.y = 600;
     this.h = 75;
     this.player = new Image();
-    this.player.src = "../images/player.png"
+    this.player.src = "../images/player.png";
+    this.audio = new Audio("../sounds/464903__plasterbrain__arcade-ui-move-cursor.flac");
   }
   drawPlayer() {
     this.game.ctx.beginPath();
@@ -19,15 +20,19 @@ class Player {
     document.onkeydown = (e) => {
       switch(e.keyCode) {    
         case 37:
+        this.audio.play();
           this.x -=80;
           break;
         case 38:
+        this.audio.play();
           this.y -=80;
           break;
         case 39:
+        this.audio.play();
           this.x +=80;
           break;
         case 40:
+        this.audio.play();
           this.y +=80;
           break;
       }

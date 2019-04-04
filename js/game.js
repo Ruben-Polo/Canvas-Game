@@ -23,7 +23,10 @@ class Game {
     this.levels = document.querySelector('.level > span');
     this.popUp = document.querySelector('.popUp');
     this.body = document.querySelector("body");
-    this.audio = new Audio("../images/Backstreet Boys - Everybody (Backstreet's Back) (Official Music Video)-[AudioTrimmer.com].mp3");
+    this.audio = new Audio("../sounds/Backstreet Boys - Everybody (Backstreet's Back) (Official Music Video)-[AudioTrimmer.com]-[AudioTrimmer.com].mp3");
+    this.audio1 = new Audio("../sounds/274178__littlerobotsoundfactory__jingle-win-synth-02.wav");
+    this.audioCollision = new Audio("../sounds/427563__tbone1999__doorhit.wav");
+    // this.mainAudio = new Audio("../sounds/mariquita-mariquita-canciones-infantiles-littlebabybum-[AudioTrimmer.com].mp3");
   }
 
   startGame() {
@@ -71,6 +74,7 @@ class Game {
         this.player.y < enemy.y + enemy.h &&
         this.player.y + this.player.h > enemy.y
       ) {
+        this.audioCollision.play();
         this.player.x = (this.w / 2) - this.player.w / 2;
         this.player.y = 600;
         this.lives--;
@@ -97,6 +101,7 @@ class Game {
       this.player.y = 635;
     }
     if (this.player.y < 0) {
+      this.audio1.play();
       this.level ++;
       this.popUp.innerHTML = `LEVEL ${this.level}`;
       this.popUp.style.display = "block";
@@ -117,9 +122,8 @@ class Game {
       })
 
       if(this.gameScore === 2 &&  this.lives > 0) {
-        console.log(this.audio)
-        this.audio.play();
-        this.popUp.innerHTML = `CONGRATULATIONS! YOU WON THE GAME!!!`;
+          this.audio.play();
+          this.popUp.innerHTML = `CONGRATULATIONS! YOU WON THE GAME!!!`;
         this.reset();
             }
     }

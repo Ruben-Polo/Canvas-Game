@@ -8,6 +8,7 @@ body {
   cursor: url(../images/bug2.png), auto;
   text-align: center;
   font-family: 'Bangers', cursive;
+  background-color: black;
 }
 
 body h1 {
