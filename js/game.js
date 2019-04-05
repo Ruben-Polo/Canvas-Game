@@ -23,10 +23,10 @@ class Game {
     this.levels = document.querySelector('.level > span');
     this.popUp = document.querySelector('.popUp');
     this.body = document.querySelector("body");
-    this.audio = new Audio("../sounds/Backstreet Boys - Everybody (Backstreet's Back) (Official Music Video)-[AudioTrimmer.com]-[AudioTrimmer.com].mp3");
-    this.audio1 = new Audio("../sounds/274178__littlerobotsoundfactory__jingle-win-synth-02.wav");
-    this.audioCollision = new Audio("../sounds/427563__tbone1999__doorhit.wav");
-    this.audioDead = new Audio("../sounds/406113__daleonfire__dead.wav");
+    this.audio = new Audio("../sounds/backstreetboys-everybody.mp3");
+    this.audio1 = new Audio("../sounds/jingle-win.wav");
+    this.audioCollision = new Audio("../sounds/tbone-doorhit.wav");
+    this.audioDead = new Audio("../sounds/daleonfire-dead.wav");
   }
 
   startGame() {

@@ -1,5 +1,5 @@
 window.onload = function() {
-  var mainAudio = new Audio("../sounds/mariquita-mariquita-canciones-infantiles-littlebabybum-[AudioTrimmer.com].mp3")
+  var mainAudio = new Audio("../sounds/mariquita-mariquita.mp3")
   var audioplay = mainAudio.play()
   if (audioplay !== undefined) {
     audioplay.then(function() {

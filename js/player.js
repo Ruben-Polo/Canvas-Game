@@ -8,7 +8,7 @@ class Player {
     this.h = 75;
     this.player = new Image();
     this.player.src = "../images/player.png";
-    this.audio = new Audio("../sounds/464903__plasterbrain__arcade-ui-move-cursor.flac");
+    this.audio = new Audio("../sounds/plasticbrain-move-cursor.flac");
   }
   drawPlayer() {
     this.game.ctx.beginPath();
