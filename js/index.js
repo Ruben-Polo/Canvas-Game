@@ -3,7 +3,6 @@ window.onload = function() {
   var audioplay = mainAudio.play()
   if (audioplay !== undefined) {
     audioplay.then(function() {
-    console.log('adios')
     }).catch(function(error) {
     });
   }
