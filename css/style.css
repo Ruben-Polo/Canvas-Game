@@ -8,7 +8,7 @@ body {
   cursor: url(../images/bug2.png), auto;
   text-align: center;
   font-family: 'Bangers', cursive;
-  background-color: black;
+  background-color: lightgoldenrodyellow;
 }
 
 body h1 {
@@ -52,16 +52,7 @@ body button {
 	justify-content: space-around;
 }
 
-/* img:hover {
-  filter: sepia(); 
-  transform: rotate(90deg); 
-  transition: 2s;
-  transform: rotate(360deg);
-  -webkit-transform: rotate(360deg);
-  -moz-transform: rotate(360deg);
-  -o-transform: rotate (360deg);
-} */
-.popUp {
+.popUp, .congratulations {
   font-size: 50px;
   display: none;
   border: solid black;
@@ -71,7 +62,7 @@ body button {
   background: #ED6565;
   position: relative;
   z-index: 9999;
-  top: -26rem;
+  top: -40rem;
 }
 
 #ocultar {
@@ -88,18 +79,21 @@ body button {
 }
 .bug {
   position: relative;
-  width: 5%;
+  width: 10%;
+  left: 50px;
+  top: 90px;
   transform-origin: 50% 50%;
   animation-name: putar;
   animation-duration: 2s;
   animation-iteration-count: infinite;
-   animation-timing-function: linear;
+  animation-timing-function: linear;
 }
 @keyframes putar {
   0% {
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(-360deg);
+    transform: rotate(360deg);
   }
 }
+

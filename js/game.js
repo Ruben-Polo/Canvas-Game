@@ -26,7 +26,7 @@ class Game {
     this.audio = new Audio("../sounds/Backstreet Boys - Everybody (Backstreet's Back) (Official Music Video)-[AudioTrimmer.com]-[AudioTrimmer.com].mp3");
     this.audio1 = new Audio("../sounds/274178__littlerobotsoundfactory__jingle-win-synth-02.wav");
     this.audioCollision = new Audio("../sounds/427563__tbone1999__doorhit.wav");
-    // this.mainAudio = new Audio("../sounds/mariquita-mariquita-canciones-infantiles-littlebabybum-[AudioTrimmer.com].mp3");
+    this.audioDead = new Audio("../sounds/406113__daleonfire__dead.wav");
   }
 
   startGame() {
@@ -80,11 +80,18 @@ class Game {
         this.lives--;
         this.liveLeft.innerHTML = this.lives;
         if(this.lives === 0) {
-        alert("Do you want to play again?")
-        this.enemies.forEach((enemy) => {
+          this.audioDead.play();
+          this.popUp.innerHTML = 'Eres un perdedor, pero podría ser peor, podrías ser Justin Bieber...y Ahora...¡LA CANCIÓN DE LAS MARIQUITAS!';
+          this.popUp.style.display = "block";
+          setTimeout( () => {
+            this.popUp.style.display = "none";
+            location.reload()
+          }, 6000);
+
+          this.enemies.forEach((enemy) => {
           enemy.x = -150;
         })
-        this.reset();
+          this.reset();
       }
     }
   })
@@ -103,11 +110,11 @@ class Game {
     if (this.player.y < 0) {
       this.audio1.play();
       this.level ++;
-      this.popUp.innerHTML = `LEVEL ${this.level}`;
+      this.popUp.innerHTML = `NIVEL ${this.level}`;
       this.popUp.style.display = "block";
       setTimeout( () => {
         this.popUp.style.display = "none";
-      }, 3000);
+      }, 4000);
       this.player.x = (this.w / 2) - this.player.w / 2;
       this.player.y = 600;
       this.time -= 5;
@@ -121,18 +128,22 @@ class Game {
       enemy.velocity += 3;
       })
 
-      if(this.gameScore === 2 &&  this.lives > 0) {
-          this.audio.play();
-          this.popUp.innerHTML = `CONGRATULATIONS! YOU WON THE GAME!!!`;
+      if(this.gameScore === 3 &&  this.lives > 0) {
+        this.audio.play();
+        this.popUp.innerHTML = `¡ENHORABUENA TITÁN, TU MADRE ESTARÁ ORGULLOSA!...EN VERDAD NO, PERO ALGO HAY QUE DECIR`;
+        this.popUp.style.display = "block";
+        setTimeout( () => {
+        this.congratulations.style.display = "none";
+        }, 8000);
         this.reset();
-            }
+            } 
     }
   }
   reset() {
         this.enemies.forEach((enemy) => {
           enemy.velocity = (Math.floor((Math.random() * 20)+1));
         })
-        this.time = 80;
+        this.time = 60;
         this.lives = 3;
         this.level = 1;
         this.gameScore = 0;
