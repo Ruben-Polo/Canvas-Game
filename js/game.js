@@ -23,15 +23,15 @@ class Game {
     this.levels = document.querySelector('.level > span');
     this.popUp = document.querySelector('.popUp');
     this.body = document.querySelector("body");
-    this.audio = new Audio("../sounds/backstreetboys-everybody.mp3");
-    this.audio1 = new Audio("../sounds/jingle-win.wav");
-    this.audioCollision = new Audio("../sounds/tbone-doorhit.wav");
-    this.audioDead = new Audio("../sounds/daleonfire-dead.wav");
+    this.audio = new Audio("./sounds/backstreetboys-everybody.mp3");
+    this.audio1 = new Audio("./sounds/jingle-win.wav");
+    this.audioCollision = new Audio("./sounds/tbone-doorhit.wav");
+    this.audioDead = new Audio("./sounds/daleonfire-dead.wav");
   }
 
   startGame() {
       this.hideHtml();
-      this.body.style.backgroundImage = "url('../images/justin.gif')"
+      this.body.style.backgroundImage = "url('./images/justin.gif')"
       this.body.style.backgroundRepeat = "repeat";
       this.body.style.backgroundSize = "20%";
       this.liveLeft.innerHTML = this.lives;

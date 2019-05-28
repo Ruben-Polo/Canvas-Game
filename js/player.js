@@ -7,8 +7,8 @@ class Player {
     this.y = 600;
     this.h = 75;
     this.player = new Image();
-    this.player.src = "../images/player.png";
-    this.audio = new Audio("../sounds/plasticbrain-move-cursor.flac");
+    this.player.src = "./images/player.png";
+    this.audio = new Audio("./sounds/plasticbrain-move-cursor.flac");
   }
   drawPlayer() {
     this.game.ctx.beginPath();

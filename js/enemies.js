@@ -7,7 +7,7 @@ class Enemy {
     this.h = 65;
     this.velocity = (Math.floor((Math.random() * 20)+1));
     this.enemy = new Image();
-    this.enemy.src = "../images/enemy.png";
+    this.enemy.src = "./images/enemy.png";
   }
 
   drawEnemies() {
