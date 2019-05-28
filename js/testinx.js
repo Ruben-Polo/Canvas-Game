@@ -60,7 +60,7 @@ document.addEventListener('keydown', (event) => {
 function init() {
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
   context = new AudioContext();
-  bufferLoader = new BufferLoader(context,["../sounds/audio-intro.mp3"],finishedLoading);
+  bufferLoader = new BufferLoader(context,["https://res.cloudinary.com/polo/video/upload/v1559054514/audio-intro_zmmroq.mp3"],finishedLoading);
   bufferLoader.load();
 }
  

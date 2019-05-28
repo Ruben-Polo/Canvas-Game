@@ -1,5 +1,5 @@
 window.onload = function() {
-  var mainAudio = new Audio("../sounds/audio-intro.mp3")
+  var mainAudio = new Audio("https://res.cloudinary.com/polo/video/upload/v1559054514/audio-intro_zmmroq.mp3")
   console.log(mainAudio)
   var audioplay = mainAudio.play()
   if (audioplay !== undefined) {
