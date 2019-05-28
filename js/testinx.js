@@ -60,7 +60,7 @@ document.addEventListener('keydown', (event) => {
 function init() {
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
   context = new AudioContext();
-  bufferLoader = new BufferLoader(context,["../sounds/mariquita-mariquita.mp3"],finishedLoading);
+  bufferLoader = new BufferLoader(context,["../sounds/audio-intro.mp3"],finishedLoading);
   bufferLoader.load();
 }
  

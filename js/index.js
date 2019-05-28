@@ -1,5 +1,5 @@
 window.onload = function() {
-  var mainAudio = new Audio("../sounds/mariquita-mariquita.mp3")
+  var mainAudio = new Audio("../sounds/audio-intro.mp3")
   console.log(mainAudio)
   var audioplay = mainAudio.play()
   if (audioplay !== undefined) {
